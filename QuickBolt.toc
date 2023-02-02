@@ -1,5 +1,5 @@
 ## Interface: 11403
-## Version: 0.3b
+## Version: 0.4b
 ## Title: |cFF5865F2QuickBolt|r
 ## Notes: Craft bolts of cloth on the go
 ## Author: Wallivandra <United> - Whitemane
