@@ -121,7 +121,8 @@ QuickBolt = {
 		isInCombat = false,
 		isSelectingCloth = false,
 		maxTailoringSkill = 0,
-		tailoringSkill = 0
+		tailoringSkill = 0,
+		tailoringWindowOpened = false
 	}
 }
 
@@ -395,6 +396,7 @@ function QuickBolt:CreateFrames()
 	QuickBolt.ui.frames.buttonOne:SetNormalFontObject(GameFontNormal)
 	QuickBolt.ui.frames.buttonOne:SetDisabledFontObject(GameFontDisable)
 	QuickBolt.ui.frames.buttonOne:SetScript("OnClick", self.DoCraft)
+	QuickBolt.ui.frames.buttonOne:Hide()
 
 	local normalTextureOne = QuickBolt.ui.frames.buttonOne:CreateTexture()
 	normalTextureOne:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
@@ -430,31 +432,67 @@ function QuickBolt:CreateFrames()
 	QuickBolt.ui.frames.buttonAll:SetNormalFontObject(GameFontNormal)
 	QuickBolt.ui.frames.buttonAll:SetDisabledFontObject(GameFontDisable)
 	QuickBolt.ui.frames.buttonAll:SetScript("OnClick", self.DoCraftAll)
+	QuickBolt.ui.frames.buttonAll:Hide()
 
-	local normalTextureOne = QuickBolt.ui.frames.buttonAll:CreateTexture()
-	normalTextureOne:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
-	normalTextureOne:SetTexCoord(0, 0.625, 0, 0.6875)
-	normalTextureOne:SetAllPoints()
+	local normalTextureAll = QuickBolt.ui.frames.buttonAll:CreateTexture()
+	normalTextureAll:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
+	normalTextureAll:SetTexCoord(0, 0.625, 0, 0.6875)
+	normalTextureAll:SetAllPoints()
 
-	local highlightTextureOne = QuickBolt.ui.frames.buttonAll:CreateTexture()
-	highlightTextureOne:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
-	highlightTextureOne:SetTexCoord(0, 0.625, 0, 0.6875)
-	highlightTextureOne:SetAllPoints()
+	local highlightTextureAll = QuickBolt.ui.frames.buttonAll:CreateTexture()
+	highlightTextureAll:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+	highlightTextureAll:SetTexCoord(0, 0.625, 0, 0.6875)
+	highlightTextureAll:SetAllPoints()
 
-	local pushedTextureOne = QuickBolt.ui.frames.buttonAll:CreateTexture()
-	pushedTextureOne:SetTexture("Interface/Buttons/UI-Panel-Button-Down")
-	pushedTextureOne:SetTexCoord(0, 0.625, 0, 0.6875)
-	pushedTextureOne:SetAllPoints()
+	local pushedTextureAll = QuickBolt.ui.frames.buttonAll:CreateTexture()
+	pushedTextureAll:SetTexture("Interface/Buttons/UI-Panel-Button-Down")
+	pushedTextureAll:SetTexCoord(0, 0.625, 0, 0.6875)
+	pushedTextureAll:SetAllPoints()
 
-	local disabledTextureOne = QuickBolt.ui.frames.buttonAll:CreateTexture()
-	disabledTextureOne:SetTexture("Interface/Buttons/UI-Panel-Button-Disabled")
-	disabledTextureOne:SetTexCoord(0, 0.625, 0, 0.6875)
-	disabledTextureOne:SetAllPoints()
+	local disabledTextureAll = QuickBolt.ui.frames.buttonAll:CreateTexture()
+	disabledTextureAll:SetTexture("Interface/Buttons/UI-Panel-Button-Disabled")
+	disabledTextureAll:SetTexCoord(0, 0.625, 0, 0.6875)
+	disabledTextureAll:SetAllPoints()
 	
-	QuickBolt.ui.frames.buttonAll:SetNormalTexture(normalTextureOne)
-	QuickBolt.ui.frames.buttonAll:SetHighlightTexture(highlightTextureOne)
-	QuickBolt.ui.frames.buttonAll:SetPushedTexture(pushedTextureOne)
-	QuickBolt.ui.frames.buttonAll:SetDisabledTexture(disabledTextureOne)
+	QuickBolt.ui.frames.buttonAll:SetNormalTexture(normalTextureAll)
+	QuickBolt.ui.frames.buttonAll:SetHighlightTexture(highlightTextureAll)
+	QuickBolt.ui.frames.buttonAll:SetPushedTexture(pushedTextureAll)
+	QuickBolt.ui.frames.buttonAll:SetDisabledTexture(disabledTextureAll)
+
+	-- Button startup
+	QuickBolt.ui.frames.buttonStartup = CreateFrame("Button", QuickBolt.addon.name.."_Button_Startup", QuickBolt.ui.frames.artwork)
+	QuickBolt.ui.frames.buttonStartup:SetPoint("CENTER", 20, 0)
+	QuickBolt.ui.frames.buttonStartup:SetWidth(124)
+	QuickBolt.ui.frames.buttonStartup:SetHeight(20)
+	QuickBolt.ui.frames.buttonStartup:SetText("Open Tailoring")
+	QuickBolt.ui.frames.buttonStartup:SetNormalFontObject(GameFontNormal)
+	QuickBolt.ui.frames.buttonStartup:SetDisabledFontObject(GameFontDisable)
+	QuickBolt.ui.frames.buttonStartup:SetScript("OnClick", self.DoStartup)
+
+	local normalTextureStartup = QuickBolt.ui.frames.buttonStartup:CreateTexture()
+	normalTextureStartup:SetTexture("Interface/Buttons/UI-Panel-Button-Up")
+	normalTextureStartup:SetTexCoord(0, 0.625, 0, 0.6875)
+	normalTextureStartup:SetAllPoints()
+
+	local highlightTextureStartup = QuickBolt.ui.frames.buttonStartup:CreateTexture()
+	highlightTextureStartup:SetTexture("Interface/Buttons/UI-Panel-Button-Highlight")
+	highlightTextureStartup:SetTexCoord(0, 0.625, 0, 0.6875)
+	highlightTextureStartup:SetAllPoints()
+
+	local pushedTextureStartup = QuickBolt.ui.frames.buttonStartup:CreateTexture()
+	pushedTextureStartup:SetTexture("Interface/Buttons/UI-Panel-Button-Down")
+	pushedTextureStartup:SetTexCoord(0, 0.625, 0, 0.6875)
+	pushedTextureStartup:SetAllPoints()
+
+	local disabledTextureStartup = QuickBolt.ui.frames.buttonStartup:CreateTexture()
+	disabledTextureStartup:SetTexture("Interface/Buttons/UI-Panel-Button-Disabled")
+	disabledTextureStartup:SetTexCoord(0, 0.625, 0, 0.6875)
+	disabledTextureStartup:SetAllPoints()
+	
+	QuickBolt.ui.frames.buttonStartup:SetNormalTexture(normalTextureStartup)
+	QuickBolt.ui.frames.buttonStartup:SetHighlightTexture(highlightTextureStartup)
+	QuickBolt.ui.frames.buttonStartup:SetPushedTexture(pushedTextureStartup)
+	QuickBolt.ui.frames.buttonStartup:SetDisabledTexture(disabledTextureStartup)
 end
 
 
@@ -616,6 +654,19 @@ function QuickBolt:DoCraftAll()
 		if GetTradeSkillInfo(tradeSkillIndex) == cloth.skillName then
 			DoTradeSkill(tradeSkillIndex, cloth.inventoryCount / cloth.requiredAmount)
 		end
+	end
+end
+
+function QuickBolt:DoStartup()
+	if not QuickBolt.variables.tailoringWindowOpened then
+		CastSpellByName("Tailoring")
+		QuickBolt.variables.tailoringWindowOpened = true
+		QuickBolt.ui.frames.buttonStartup:SetText("Close Tailoring")
+	else
+		CastSpellByName("Tailoring")
+		QuickBolt.ui.frames.buttonStartup:Hide()
+		QuickBolt.ui.frames.buttonOne:Show()
+		QuickBolt.ui.frames.buttonAll:Show()
 	end
 end
 
