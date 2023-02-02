@@ -277,9 +277,6 @@ end
 
 function QuickBolt:SlashCommandReset()
 	QuickBolt_SavedVariables = QuickBolt.defaults
-	-- QuickBolt:ShowFrame()
-	-- QuickBolt.ui.frames.skillTracker:Show()
-	-- QuickBolt:CloseClothDrawer()
 	QuickBolt:Print("all saved data was reset to defaults")
 end
 
