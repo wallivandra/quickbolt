@@ -1,0 +1,9 @@
+## Interface: 11403
+## Version: 0.3b
+## Title: |cFF5865F2QuickBolt|r
+## Notes: Craft bolts of cloth on the go
+## Author: Wallivandra <United> - Whitemane
+
+## SavedVariablesPerCharacter: QuickBolt_SavedVariables
+
+QuickBolt.lua
