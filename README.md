@@ -3,6 +3,13 @@ QuickBolt is a World of Warcraft Tailoring addon built specifically to handle th
 
 The addon is currently a beta version, so there are still some features missing. **The main functionality is ready to use**.
 
+### Installation instructions
+1. Click the green `<>` button
+2. Click `Download ZIP`
+3. Extract the zip file
+4. Rename the `quickbolt-main` folder to `QuickBolt`
+5. Move the `QuickBolt` folder into your `_classic_era_/Interface/AddOns` folder
+
 ### Features
 - Track the amount of cloth you have in your bags
 - Craft one, or craft all bolts with a single click
